@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanetExpress", "PlanetExpress\PlanetExpress.csproj", "{6A25B530-F09E-49AD-80D8-85CAF39AE7A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlanetExpress.Tests", "PlanetExpress.Tests\PlanetExpress.Tests.csproj", "{803CAB56-46FF-4275-98A2-F2E299098826}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A25B530-F09E-49AD-80D8-85CAF39AE7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A25B530-F09E-49AD-80D8-85CAF39AE7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A25B530-F09E-49AD-80D8-85CAF39AE7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A25B530-F09E-49AD-80D8-85CAF39AE7A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{803CAB56-46FF-4275-98A2-F2E299098826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803CAB56-46FF-4275-98A2-F2E299098826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803CAB56-46FF-4275-98A2-F2E299098826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803CAB56-46FF-4275-98A2-F2E299098826}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AFF3D80-671E-4525-8AA5-27AB698F4D4E}
+	EndGlobalSection
+EndGlobal
