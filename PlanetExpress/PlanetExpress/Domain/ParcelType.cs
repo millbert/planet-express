@@ -1,4 +1,4 @@
-﻿namespace PlanetExpress;
+﻿namespace PlanetExpress.Domain;
 
 /// <summary>
 /// Enum for the various sizes of parcel

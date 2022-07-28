@@ -1,3 +1,5 @@
+using PlanetExpress.Domain;
+
 namespace PlanetExpress.Tests;
 
 [TestClass]

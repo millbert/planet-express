@@ -1,4 +1,6 @@
-﻿namespace PlanetExpress;
+﻿using PlanetExpress.Core;
+
+namespace PlanetExpress.Domain;
 
 /// <summary>
 /// Class for the parcels being sent

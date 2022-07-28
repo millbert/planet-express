@@ -1,4 +1,4 @@
-﻿namespace PlanetExpress;
+﻿namespace PlanetExpress.Core;
 
 public class Constants
 {
