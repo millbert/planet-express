@@ -8,11 +8,12 @@ namespace PlanetExpress.Domain;
 /// </summary>
 public class Parcel : IInvoiceItem
 {
-    public Parcel(int height, int width, int length)
+    public Parcel(int height, int width, int length, int weight)
     {
         Height = height;
         Width = width;
         Length = length;
+        Weight = weight;
     }
 
     #region Properties
@@ -63,6 +64,21 @@ public class Parcel : IInvoiceItem
     }
 
     /// <summary>
+    /// Weight of the parcel
+    /// Must be a positive value
+    /// </summary>
+    private int _weight;
+    public int Weight
+    {
+        get => _weight;
+        set
+        {
+            if (value > 0) _weight = value;
+            else throw new ArgumentOutOfRangeException($"{nameof(value)} must be above 0");
+        }
+    }
+
+    /// <summary>
     /// Parcel type pulled from the dimensions entered
     /// </summary>
     private ParcelType _type;
@@ -103,13 +119,32 @@ public class Parcel : IInvoiceItem
     /// <exception cref="ArgumentOutOfRangeException">If out of range of enum throw exception</exception>
     private decimal GetPrice()
     {
-        return Type switch
+        switch (Type)
         {
-            ParcelType.Small => Constants.ParcelPricingSmall,
-            ParcelType.Medium => Constants.ParcelPricingMedium,
-            ParcelType.Large => Constants.ParcelPricingLarge,
-            ParcelType.XL => Constants.ParcelPricingXL,
-            _ => throw new ArgumentOutOfRangeException(),
-        };
+            case ParcelType.Small:
+                var excess = Excess(Constants.ParcelWeightLimitSmall);
+                return excess > 0 ? ExcessPrice(excess, Constants.ParcelPricingSmall) : Constants.ParcelPricingSmall;
+            case ParcelType.Medium:
+                excess = Excess(Constants.ParcelWeightLimitMedium);
+                return excess > 0 ? ExcessPrice(excess, Constants.ParcelPricingMedium) : Constants.ParcelPricingMedium;
+            case ParcelType.Large:
+                excess = Excess(Constants.ParcelWeightLimitLarge);
+                return excess > 0 ? ExcessPrice(excess, Constants.ParcelPricingLarge) : Constants.ParcelPricingLarge;
+            case ParcelType.XL:
+                excess = Excess(Constants.ParcelWeightLimitXL);
+                return excess > 0 ? ExcessPrice(excess, Constants.ParcelPricingXL) : Constants.ParcelPricingXL;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    private int Excess(int weightLimit)
+    {
+        return Weight - weightLimit;
+    }
+
+    private static decimal ExcessPrice(int excess, decimal basePrice)
+    {
+        return (excess * Constants.ParcelWeightLimitExcess) + basePrice;
     }
 }

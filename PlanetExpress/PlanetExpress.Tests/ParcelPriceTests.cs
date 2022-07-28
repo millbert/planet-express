@@ -1,5 +1,4 @@
 using PlanetExpress.Core;
-using PlanetExpress.Domain;
 
 namespace PlanetExpress.Tests;
 
@@ -9,13 +8,7 @@ public class ParcelPriceTests
     [TestMethod]
     public void NewParcelPricing_WithValidDimensions_Small()
     {
-        //Arrange
-        const int height = 1;
-        const int width = 1;
-        const int length = 1;
-
-        //Act
-        var parcel = new Parcel(height, width, length);
+        var parcel = TestConstants.SmallParcel;
 
         //Assert
         var price = parcel.Price;
@@ -25,13 +18,7 @@ public class ParcelPriceTests
     [TestMethod]
     public void NewParcelPricing_WithValidDimensions_Medium()
     {
-        //Arrange
-        const int height = 49;
-        const int width = 1;
-        const int length = 1;
-
-        //Act
-        var parcel = new Parcel(height, width, length);
+        var parcel = TestConstants.MediumParcel;
 
         //Assert
         var price = parcel.Price;
@@ -41,13 +28,7 @@ public class ParcelPriceTests
     [TestMethod]
     public void NewParcelPricing_WithValidDimensions_Large()
     {
-        //Arrange
-        const int height = 99;
-        const int width = 1;
-        const int length = 1;
-
-        //Act
-        var parcel = new Parcel(height, width, length);
+        var parcel = TestConstants.LargeParcel;
 
         //Assert
         var price = parcel.Price;
@@ -57,13 +38,7 @@ public class ParcelPriceTests
     [TestMethod]
     public void NewParcelPricing_WithValidDimensions_XL()
     {
-        //Arrange
-        const int height = 100;
-        const int width = 1;
-        const int length = 1;
-
-        //Act
-        var parcel = new Parcel(height, width, length);
+        var parcel = TestConstants.XLParcel;
 
         //Assert
         var price = parcel.Price;

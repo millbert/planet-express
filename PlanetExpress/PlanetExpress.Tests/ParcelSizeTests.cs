@@ -14,7 +14,7 @@ public class ParcelSizeTests
         const int length = 1;
 
         //Act
-        var parcel = new Parcel(height, width, length);
+        var parcel = TestConstants.SmallParcel;
 
         //Assert
         var type = parcel.Type;
@@ -30,7 +30,7 @@ public class ParcelSizeTests
         const int length = 1;
 
         //Act
-        var parcel = new Parcel(height, width, length);
+        var parcel = TestConstants.MediumParcel;
 
         //Assert
         var type = parcel.Type;
@@ -46,7 +46,7 @@ public class ParcelSizeTests
         const int length = 1;
 
         //Act
-        var parcel = new Parcel(height, width, length);
+        var parcel = TestConstants.LargeParcel;
 
         //Assert
         var type = parcel.Type;
@@ -62,7 +62,7 @@ public class ParcelSizeTests
         const int length = 1;
 
         //Act
-        var parcel = new Parcel(height, width, length);
+        var parcel = TestConstants.XLParcel;
 
         //Assert
         var type = parcel.Type;
@@ -77,8 +77,9 @@ public class ParcelSizeTests
         const int height = -1;
         const int width = 0;
         const int length = 1;
+        const int weight = 1;
 
         //Assert
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Parcel(height, width, length), "Invalid parcel dimensions are being accepted");
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Parcel(height, width, length, weight), "Invalid parcel dimensions are being accepted");
     }
 }
