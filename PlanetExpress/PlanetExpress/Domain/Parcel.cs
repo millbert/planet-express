@@ -6,7 +6,7 @@ namespace PlanetExpress.Domain;
 /// Class for the parcels being sent
 /// Assuming only whole cm lengths can be used
 /// </summary>
-public class Parcel
+public class Parcel : IInvoiceItem
 {
     public Parcel(int height, int width, int length)
     {
@@ -96,7 +96,12 @@ public class Parcel
         return ParcelType.XL;
     }
 
-    public decimal GetPrice()
+    /// <summary>
+    /// Gets the pricing for Parcel types
+    /// </summary>
+    /// <returns>Pricing for each parcel</returns>
+    /// <exception cref="ArgumentOutOfRangeException">If out of range of enum throw exception</exception>
+    private decimal GetPrice()
     {
         return Type switch
         {

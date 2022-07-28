@@ -1,15 +1,22 @@
 ﻿namespace PlanetExpress.Domain;
 
+/// <summary>
+/// Class for displaying invoices
+/// </summary>
 public class Invoice
 {
-    public Invoice(List<Parcel> parcels)
+    /// <summary>
+    /// Constructor containing list of invoice items
+    /// </summary>
+    /// <param name="invoiceItems"></param>
+    public Invoice(List<IInvoiceItem> invoiceItems)
     {
-        Parcels = parcels;
+        InvoiceItems = invoiceItems;
     }
 
     #region Properties
 
-    public List<Parcel> Parcels { get; set; }
+    public List<IInvoiceItem> InvoiceItems { get; set; }
 
     private decimal _parcelTotal = 0;
     public decimal ParcelTotal
@@ -26,7 +33,23 @@ public class Invoice
     /// <returns></returns>
     private decimal CalculateParcelTotal()
     {
-        var prices = Parcels.Select(s => s.Price).ToList();
+        var prices = InvoiceItems.Select(s => s.Price).ToList();
         return prices.Sum();
+    }
+
+    /// <summary>
+    /// Adds speedy shipping to order
+    /// Will only add to order once
+    /// If exists remove and recalculate
+    /// This feels gross
+    /// </summary>
+    public void AddSpeedyShipping()
+    {
+        var speedy = InvoiceItems.OfType<ShippingExtra>().ToList()
+            .FirstOrDefault(x => x.ShippingExtraType == ShippingExtraType.Speedy);
+
+        if (speedy != null) InvoiceItems.Remove(speedy);
+
+        InvoiceItems.Add(new ShippingExtra(ParcelTotal, ShippingExtraType.Speedy));
     }
 }
