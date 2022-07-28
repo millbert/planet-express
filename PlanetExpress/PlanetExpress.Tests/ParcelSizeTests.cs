@@ -1,7 +1,7 @@
 namespace PlanetExpress.Tests;
 
 [TestClass]
-public class ParcelTests
+public class ParcelSizeTests
 {
     [TestMethod]
     public void NewParcel_WithValidDimensions_Small()

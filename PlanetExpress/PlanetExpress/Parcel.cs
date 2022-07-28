@@ -70,6 +70,16 @@ public class Parcel
         set => _type = value;
     }
 
+    /// <summary>
+    /// Parcel pricing
+    /// </summary>
+    private decimal _price = 0;
+    public decimal Price
+    {
+        get => _price = GetPrice();
+        set => _price = value;
+    }
+
     #endregion
 
     /// <summary>
@@ -82,5 +92,17 @@ public class Parcel
         if (Height < 50 && Width < 50 && Length < 50) return ParcelType.Medium;
         if (Height < 100 && Width < 100 && Length < 100) return ParcelType.Large;
         return ParcelType.XL;
+    }
+
+    public decimal GetPrice()
+    {
+        return Type switch
+        {
+            ParcelType.Small => Constants.ParcelPricingSmall,
+            ParcelType.Medium => Constants.ParcelPricingMedium,
+            ParcelType.Large => Constants.ParcelPricingLarge,
+            ParcelType.XL => Constants.ParcelPricingXL,
+            _ => throw new ArgumentOutOfRangeException(),
+        };
     }
 }
